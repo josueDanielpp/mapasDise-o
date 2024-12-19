@@ -9,6 +9,7 @@ import DrawShapesWithHoles from './Componentes/DrawShapesWithHoles'
 import DrawShapesExample from './Componentes/DrawShapesExample'
 import MasFiguras from './Componentes/MasFiguras'
 import DibujarPorligono from './Componentes/DibujarPorligono'
+import MetrosFig from './Componentes/MetrosFig'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,6 +24,7 @@ function App() {
       {/*      <DrawShapesExample/>
  */}
        <MasFiguras/>
+       {/* <MetrosFig/> */}
      {/*  <DibujarPorligono /> */}
 
 
