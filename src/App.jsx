@@ -23,8 +23,8 @@ function App() {
       {/*  <DrawShapesWithHoles /> */}
       {/*      <DrawShapesExample/>
  */}
-       <MasFiguras/>
-       {/* <MetrosFig/> */}
+       {/* <MasFiguras/> */}
+       <MetrosFig/>
      {/*  <DibujarPorligono /> */}
 
 
