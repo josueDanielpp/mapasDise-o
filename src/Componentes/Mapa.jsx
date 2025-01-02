@@ -109,12 +109,11 @@ const Ejemplo = () => {
         });
 
         setMapa(map);
-        fetchCapabilities(layerRecursoGeo, setBboxCoords, setProjection); // Obtener bbox y proyección dinámica
+        fetchCapabilities(layerRecursoGeo, setBboxCoords, setProjection); 
 
-        return () => map.setTarget(undefined); // Limpiar mapa al desmontar
+        return () => map.setTarget(undefined); 
     }, []);
 
-    // Función para manejar clics en el mapa
     useEffect(() => {
         if (mapa && projection) {
             mapa.on("singleclick", function (evt) {
