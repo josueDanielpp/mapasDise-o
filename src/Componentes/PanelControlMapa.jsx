@@ -14,10 +14,8 @@ import { Polygon } from 'ol/geom';
 import { Overlay } from 'ol';
 import { transform } from 'ol/proj';
 import { getDistance } from 'ol/sphere';
-import OlLayerTile from 'ol/layer/Tile';
-import OlSourceOsm from 'ol/source/OSM';
-import OlSourceTileWMS from 'ol/source/TileWMS';
-import OlSourceXYZ from 'ol/source/XYZ';
+
+import ControlCapas from './ControlCapas';
 
 
 const PanelControlMapa = ({ mapa }) => {
@@ -45,110 +43,8 @@ const PanelControlMapa = ({ mapa }) => {
 
     const [capaSeleccionada, setCapaSeleccionada] = useState(null);
 
-    let habilitarHover=useRef(false);
-    const opcionCapas = [
-        new OlLayerTile({
-            source: new OlSourceOsm(),
-            properties: {
-                name: 'OSM',
-                isBackgroundLayer: true,
-                type: 'OpenStreetMap',
-                description: 'OpenStreetMap base layer',
-                minZoom: 0,
-                maxZoom: 19,
-                opacity: 1.0,
-                attributions: '© OpenStreetMap contributors'
-            }
-        }),
-        new OlLayerTile({
-            visible: false,
-            source: new OlSourceTileWMS({
-                url: 'https://sgx.geodatenzentrum.de/wms_topplus_open',
-                params: {
-                    LAYERS: 'web'
-                },
-                attributions: '© <a href="https://www.bkg.bund.de">Bundesamt für Kartographie und Geodäsie' +
-                    `(${new Date().getFullYear()})</a>, ` +
-                    '<a href="https://sgx.geodatenzentrum.de/web_public/gdz/datenquellen/Datenquellen_TopPlusOpen.html">' +
-                    'Datenquellen</a>'
-            }),
-            properties: {
-                name: 'BKG',
-                isBackgroundLayer: true,
-                type: 'WMS',
-                description: 'TopPlusOpen WMS layer',
-                minZoom: 1,
-                maxZoom: 18,
-                opacity: 0.9,
-                attributions: '© Bundesamt für Kartographie und Geodäsie'
-            }
-        }),
-        new OlLayerTile({
-            source: new OlSourceOsm({
-                url: 'https://{a-c}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
-            }),
-            properties: {
-                name: 'OSM HOT',
-                isBackgroundLayer: true,
-                type: 'OpenStreetMap',
-                description: 'OpenStreetMap HOT layer',
-                minZoom: 0,
-                maxZoom: 19,
-                opacity: 1.0,
-                attributions: '© OpenStreetMap contributors'
-            }
-        }),
-        new OlLayerTile({
-            visible: false,
-            source: new OlSourceTileWMS({
-                url: 'https://ows.terrestris.de/osm/service?',
-                params: {
-                    LAYERS: 'OSM-WMS'
-                },
-                attributions: 'Map data © OpenStreetMap contributors'
-            }),
-            properties: {
-                name: 'Terrestris OSM',
-                isBackgroundLayer: true,
-                type: 'WMS',
-                description: 'Terrestris OpenStreetMap WMS layer',
-                minZoom: 1,
-                maxZoom: 18,
-                opacity: 0.8,
-                attributions: '© OpenStreetMap contributors'
-            }
-        }),
-        new OlLayerTile({
-            source: new OlSourceXYZ({
-                url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
-            }),
-            properties: {
-                name: 'ArcGIS Imagery',
-                isBackgroundLayer: true,
-                type: 'XYZ',
-                description: 'ArcGIS World Imagery base layer',
-                minZoom: 0,
-                maxZoom: 22,
-                opacity: 1.0,
-                attributions: '© Esri, Maxar, Earthstar Geographics'
-            }
-        }),
-        new OlLayerTile({
-            source: new OlSourceXYZ({
-                url: 'https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'
-            }),
-            properties: {
-                name: 'CartoDB Positron',
-                isBackgroundLayer: true,
-                type: 'XYZ',
-                description: 'CartoDB Positron base layer',
-                minZoom: 0,
-                maxZoom: 20,
-                opacity: 1.0,
-                attributions: '© CartoDB'
-            }
-        })
-    ];
+    let habilitarHover = useRef(false);
+    
 
 
 
@@ -728,7 +624,7 @@ const PanelControlMapa = ({ mapa }) => {
                     {/*funcion menu */}
                     {(funcionAcual === 'Menu') && (<>
                         {funcionalidaes.dibujar && (<Seleccion className='iconos' onClick={() => cambiarFuncion("Dibujar")} />)}
-                        {funcionalidaes.hover && (<Mouse className='iconos' onClick={() => {cambiarFuncion("Hover");ativarHover(true);}} />)}
+                        {funcionalidaes.hover && (<Mouse className='iconos' onClick={() => { cambiarFuncion("Hover"); ativarHover(true); }} />)}
                     </>)}
                     {/*funcion Dibujar */}
                     {funcionAcual === 'Dibujar' && (<>
@@ -776,7 +672,12 @@ const PanelControlMapa = ({ mapa }) => {
                     </>)}
                 </div>
             </div>
-
+            {funcionalidaes.fondo && (
+                <div className='cajaFondoMapa'>
+                    <ControlCapas mapaParametro={mapa}/>
+                </div>
+            )
+            }
         </div>
     )
 }
