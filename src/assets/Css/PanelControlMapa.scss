@@ -30,12 +30,11 @@
         position: absolute;
         bottom: 10px;
         left: 10px;
-      
-        
         display: flex;
 
         .panelControl {
             display: flex;
+
             .ol-attribution {
                 display: none;
             }
@@ -43,21 +42,52 @@
             .menuCapas {
                 background-color: white;
                 border-radius: 10px;
-                display: 'flex';
+                display: flex;
                 margin-left: 10px;
                 padding: 10px;
+                height: 80px;
 
-                .opcionesCapas {
-                    width: 48px;
-                    height: 48px;
-                    margin-top: 12px;
-                    margin-left: 8px;
+                .cajaGeneral {
+                    display: flex;
+                    align-items: center;
 
-                    .imagenes {
-                        border-radius: 8px;
+                    .cajaOpciones {
+                        display: flex;
+                        overflow: hidden;
 
-                        width: 100%;
-                        height: 100%;
+                        .opcionesCapas {
+                            position: relative;
+                            width: 80px;
+                            height: 80px;
+                            border-radius: 8px;
+                            overflow: hidden;
+                            cursor: pointer;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+
+                            .imagenes {
+                                width: 60px;
+                                height: 60px;
+                                object-fit: cover;
+                                border-radius: 8px;
+                            }
+
+                            .contenedorNombre {
+                                word-wrap: break-word;
+                                overflow-wrap: break-word;
+
+                                .nombre {
+                                    font-size: 10px;
+                                    text-align: center;
+                                    white-space: normal;
+                                    margin-top: 3px;
+                                    margin-bottom: 0px;
+                                }
+                            }
+
+                            
+                        }
                     }
                 }
             }
@@ -66,12 +96,8 @@
                 border-radius: 10px;
                 border: 3px solid black;
                 padding: 3px;
-
-
+                margin-bottom: 30px;
             }
         }
-
-
-
     }
 }

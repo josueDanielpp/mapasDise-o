@@ -188,7 +188,7 @@ const ControlCapas = ({ mapaParametro }) => {
     };
 
     return (
-        <div className='panelControl'  >
+        <div className='panelControl' onMouseLeave={dejarRaton} >
             <div className='marcoMapa' onMouseEnter={entarRaton} >
                 <div ref={referenciamapaSeleccionado} style={{ width: '60px', height: '60px' }} ></div>
             </div>

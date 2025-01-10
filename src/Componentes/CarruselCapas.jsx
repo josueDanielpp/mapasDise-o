@@ -55,33 +55,30 @@ const CarruselCapas = ({capas,mapaPara,mapaSele}) => {
     };
 
     return (
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div className='cajaGeneral'>
             {/* Botón de retroceso */}
             <button onClick={retroceder} disabled={indiceInicio === 0}>
                 &lt;
             </button>
 
             {/* Contenedor de las capas visibles */}
-            <div style={{ display: 'flex', gap: '10px', overflow: 'hidden', margin: '0 10px' }} >
+            <div className='cajaOpciones'>
                 {capasVisibles.map((capa, indice) => (
                     
                     <div
                         key={indice}
-                        style={{
-                            width: '50px',
-                            height: '50px',
-                            borderRadius: '8px',
-                            overflow: 'hidden',
-                            boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)',
-                            cursor: 'pointer',
-                        }}
+                        className='opcionesCapas'
                         onClick={() => { cambiarfondo(indice) }}
                     >
                         <img
                             src={capa.values_.image}
                             alt={capa.values_.name}
-                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                            className='imagenes'
                         />
+                        <div className='contenedorNombre'>
+                            <pre className='nombre'>{capa?.values_?.name}</pre>
+                            
+                        </div>
                     </div>
                 ))}
             </div>

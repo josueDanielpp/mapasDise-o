@@ -324,7 +324,7 @@ const MasFiguras = () => {
 
     return (
         <div>
-            <div style={{ position: 'relative', width: '500px', height: '500px' }}>
+            <div style={{ position: 'relative',width: '100%', height: '70vh' }}>
                 <div
                     ref={mapRef}
                     style={{ width: '100%', height: '100%' }}
