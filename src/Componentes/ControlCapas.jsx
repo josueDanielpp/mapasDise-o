@@ -126,7 +126,59 @@ const ControlCapas = ({ mapaParametro }) => {
                 opacity: 1.0,
                 attributions: '© CartoDB'
             }
+        }),
+        new OlLayerTile({
+            source: new OlSourceXYZ({
+                url: 'https://cartodb-basemaps-a.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png'
+            }),
+            properties: {
+                name: 'CartoDB Dark Matter',
+                isBackgroundLayer: true,
+                type: 'XYZ',
+                description: 'CartoDB Dark Matter base layer',
+                minZoom: 0,
+                maxZoom: 20,
+                opacity: 1.0,
+                attributions: '© CartoDB'
+            }
+        }),
+        
+        new OlLayerTile({
+            source: new OlSourceXYZ({
+                url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}'
+            }),
+            properties: {
+                name: 'Esri Dark Gray Canvas',
+                isBackgroundLayer: true,
+                type: 'XYZ',
+                description: 'Esri Dark Gray Canvas base layer',
+                minZoom: 0,
+                maxZoom: 16,
+                opacity: 1.0,
+                attributions: '© Esri, HERE, Garmin, FAO, USGS, NGA, EPA, NPS'
+            }
+        }),
+        new OlLayerTile({
+            source: new OlSourceXYZ({
+                url: 'https://{a-c}.tile.opentopomap.org/{z}/{x}/{y}.png'
+            }),
+            properties: {
+                name: 'OpenTopoMap Dark',
+                isBackgroundLayer: true,
+                type: 'XYZ',
+                description: 'OpenTopoMap Dark base layer',
+                minZoom: 0,
+                maxZoom: 17,
+                opacity: 1.0,
+                attributions: '© OpenStreetMap contributors'
+            }
         })
+
+
+
+
+
+
     ];
     useEffect(() => {
         if (mapaParametro != null && mapaParametro != undefined && mapaParametro != "") {
@@ -193,16 +245,9 @@ const ControlCapas = ({ mapaParametro }) => {
                 <div ref={referenciamapaSeleccionado} style={{ width: '60px', height: '60px' }} ></div>
             </div>
             {mostarOpciones && (
-                /*  <div style={{ display: 'flex' }} className='menuCapas'>
-                     {opcionCapas.map((capa, index) => (
-                         <div key={index} className='opcionesCapas' onClick={() => { cambiarfondo(index) }}>
-                             <img src={capa.getProperties().image} alt={capa.getProperties().name} className='imagenes' />
-                             <p >{capa.getProperties().attributions}</p>
-                         </div>
-                     ))} mapaPara,mapaSele}
-                 </div> */
+                
                 <div className='menuCapas'>
-                    <CarruselCapas capas={opcionCapas} mapaPara={mapaParametro} mapaSele={mapaSeleccionado}/>
+                    <CarruselCapas capas={opcionCapas} mapaPara={mapaParametro} mapaSele={mapaSeleccionado} />
                 </div>
 
             )

@@ -3,7 +3,7 @@ import OlLayerTile from 'ol/layer/Tile';
 
 const CarruselCapas = ({capas,mapaPara,mapaSele}) => {
     const [indiceInicio, setIndiceInicio] = useState(0); // Índice inicial de las capas visibles
-    const elementosPorPagina = 3; // Número de elementos visibles por página
+    const elementosPorPagina = 4; // Número de elementos visibles por página
 
     // Calcular los elementos visibles según el índice actual
     const capasVisibles = capas.slice(indiceInicio, indiceInicio + elementosPorPagina);
@@ -68,7 +68,7 @@ const CarruselCapas = ({capas,mapaPara,mapaSele}) => {
                     <div
                         key={indice}
                         className='opcionesCapas'
-                        onClick={() => { cambiarfondo(indice) }}
+                        onClick={() => { cambiarfondo(indiceInicio+indice) }}
                     >
                         <img
                             src={capa.values_.image}

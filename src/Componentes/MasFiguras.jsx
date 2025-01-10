@@ -87,7 +87,7 @@ const MasFiguras = () => {
                     VERSION: "1.1.0",
                     REQUEST: "GetMap",
                     LAYERS:
-                        "geonode:poli_voronoi_nl_49_cc,geonode:beneficiarios,geonode:buffer2km_cc_49_topochico_nl,geonode:19e",
+                        "geonode:poli_voronoi_nl_49_cc,geonode:beneficiarios,geonode:buffer2km_cc_49_topochico_nl",
                     BBOX: "-100.9925771, 22.961170783160195, -99.04279603662275, 27.7031194",
                     SRS: "EPSG:3857",
                     FORMAT: "image/png",
